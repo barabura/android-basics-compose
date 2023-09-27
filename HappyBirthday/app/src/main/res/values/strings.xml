@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Happy Birthday</string>
+    <string name="happy_birthday_text">Happee Birthdae Harry!</string>
+    <string name="signature_text">from Rubeus Hagrid</string>
 </resources>
