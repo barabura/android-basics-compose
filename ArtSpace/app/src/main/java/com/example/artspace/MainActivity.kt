@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,8 +12,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -35,6 +36,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.artspace.ui.theme.ArtSpaceTheme
 
 class MainActivity : ComponentActivity() {
@@ -63,7 +65,7 @@ fun ArtSpaceApp() {
                     )
                 },
                 colors = TopAppBarDefaults.smallTopAppBarColors(
-                    containerColor = Color(0xFFB7ADC4)
+                    containerColor = Color(0xFFC6C3C9)
                 )
             )
         }
@@ -76,66 +78,54 @@ fun ArtSpaceApp() {
             color = MaterialTheme.colorScheme.background
         ) {
             when (currentStep) {
-                1 -> {
-                    ArtSpaceLayout(
-                        imagePainter = painterResource(id = R.drawable.stephan_valentin),
-                        imageDescription = "Stephan Valentin Art",
-                        artName = "Vintage car driver",
-                        artAuthor = "Stephan Valentin (2018)",
-                        onPreviousClick = {currentStep = 6},
-                        onNextClick = {currentStep = 2}
-                    )
-                }
-                2 -> {
-                    ArtSpaceLayout(
-                        imagePainter = painterResource(id = R.drawable.esteban_chinchilla),
-                        imageDescription = "Esteban Chinchilla Art",
-                        artName = "New York Subway",
-                        artAuthor = "Esteban Chinchilla (2020)",
-                        onPreviousClick = {currentStep = 1},
-                        onNextClick = {currentStep = 3}
-                    )
-                }
-                3 -> {
-                    ArtSpaceLayout(
-                        imagePainter = painterResource(id = R.drawable.lin_zhaohai),
-                        imageDescription = "Lin Zhaohai Art",
-                        artName = "Big City View",
-                        artAuthor = "Lin Zhaohai (2023)",
-                        onPreviousClick = {currentStep = 2},
-                        onNextClick = {currentStep = 4}
-                    )
-                }
-                4 -> {
-                    ArtSpaceLayout(
-                        imagePainter = painterResource(id = R.drawable.fred_nassar),
-                        imageDescription = "Fred Nassar Art",
-                        artName = "Akihabara street, Tokyo",
-                        artAuthor = "Fred Nassar (2019)",
-                        onPreviousClick = {currentStep = 3},
-                        onNextClick = {currentStep = 5}
-                    )
-                }
-                5 -> {
-                    ArtSpaceLayout(
-                        imagePainter = painterResource(id = R.drawable.mak),
-                        imageDescription = "Mak Art",
-                        artName = "The cross",
-                        artAuthor = "Mak (2023)",
-                        onPreviousClick = {currentStep = 4},
-                        onNextClick = {currentStep = 6}
-                    )
-                }
-                else -> {
-                    ArtSpaceLayout(
-                        imagePainter = painterResource(id = R.drawable.sarah_embee),
-                        imageDescription = "Sarah Embee Art",
-                        artName = "Sunny York day, UK",
-                        artAuthor = "Sarah Embee (2020)",
-                        onPreviousClick = {currentStep = 5},
-                        onNextClick = {currentStep = 1}
-                    )
-                }
+                1 -> ArtSpaceLayout(
+                    imagePainter = painterResource(id = R.drawable.stephan_valentin),
+                    imageDescription = "Stephan Valentin Art",
+                    artName = "Vintage car driver",
+                    artAuthor = "Stephan Valentin (2018)",
+                    onPreviousClick = {currentStep = 6},
+                    onNextClick = {currentStep = 2}
+                )
+                2 -> ArtSpaceLayout(
+                    imagePainter = painterResource(id = R.drawable.esteban_chinchilla),
+                    imageDescription = "Esteban Chinchilla Art",
+                    artName = "New York Subway",
+                    artAuthor = "Esteban Chinchilla (2020)",
+                    onPreviousClick = {currentStep = 1},
+                    onNextClick = {currentStep = 3}
+                )
+                3 -> ArtSpaceLayout(
+                    imagePainter = painterResource(id = R.drawable.lin_zhaohai),
+                    imageDescription = "Lin Zhaohai Art",
+                    artName = "Big City View",
+                    artAuthor = "Lin Zhaohai (2023)",
+                    onPreviousClick = {currentStep = 2},
+                    onNextClick = {currentStep = 4}
+                )
+                4 -> ArtSpaceLayout(
+                    imagePainter = painterResource(id = R.drawable.fred_nassar),
+                    imageDescription = "Fred Nassar Art",
+                    artName = "Akihabara street, Tokyo",
+                    artAuthor = "Fred Nassar (2019)",
+                    onPreviousClick = {currentStep = 3},
+                    onNextClick = {currentStep = 5}
+                )
+                5 -> ArtSpaceLayout(
+                    imagePainter = painterResource(id = R.drawable.mak),
+                    imageDescription = "Mak Art",
+                    artName = "The cross",
+                    artAuthor = "Mak (2023)",
+                    onPreviousClick = {currentStep = 4},
+                    onNextClick = {currentStep = 6}
+                )
+                else -> ArtSpaceLayout(
+                    imagePainter = painterResource(id = R.drawable.sarah_embee),
+                    imageDescription = "Sarah Embee Art",
+                    artName = "Sunny York day, UK",
+                    artAuthor = "Sarah Embee (2020)",
+                    onPreviousClick = {currentStep = 5},
+                    onNextClick = {currentStep = 1}
+                )
             }
         }
     }
@@ -152,7 +142,7 @@ fun ArtSpaceLayout(
     onNextClick: () -> Unit
 ) {
     Column(
-        modifier = modifier.padding(30.dp),
+        modifier = modifier.padding(40.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -162,27 +152,45 @@ fun ArtSpaceLayout(
         )
         Spacer(modifier = Modifier.height(20.dp))
         Column {
-            Text(text = artName)
-            Text(text = artAuthor)
+            Text(
+                text = artName,
+                fontWeight = FontWeight.Bold,
+                fontSize = 25.sp
+            )
+            Text(
+                text = artAuthor,
+                fontSize = 18.sp
+            )
         }
-        Spacer(modifier = Modifier.height(30.dp))
+        Spacer(modifier = Modifier.height(20.dp))
         Row(
             modifier = modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Button(
                 onClick = onPreviousClick,
-                modifier = modifier
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFC6C3C9)),
+                modifier = modifier.size(width = 130.dp, height = 50.dp)
             ) {
-                Text(text = "Previous")
+                Text(
+                    text = "Previous",
+                    color = Color.Black,
+                    fontSize = 20.sp
+                )
             }
             Button(
                 onClick = onNextClick,
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFC6C3C9)),
                 modifier = modifier
                     .fillMaxWidth()
                     .wrapContentWidth(Alignment.End)
+                    .size(width = 130.dp, height = 50.dp)
             ) {
-                Text(text = "Next")
+                Text(
+                    text = "Next",
+                    color = Color.Black,
+                    fontSize = 20.sp
+                )
             }
         }
         Spacer(modifier = Modifier.height(10.dp))
